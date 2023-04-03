@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -w"
+    "start": "tsup --watch",
+    "build": "tsup"
   },
   "bin": {
     "repress": "bin/repress.js"
@@ -15,7 +16,9 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.11",
+    "ora": "^6.3.0",
     "rollup": "^3.20.2",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.3"
   },
   "dependencies": {

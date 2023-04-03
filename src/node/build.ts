@@ -3,7 +3,8 @@ import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants'
 import type { RollupOutput } from 'rollup'
 import pluginReact from '@vitejs/plugin-react'
 import { join } from 'path'
-import * as fs from 'fs-extra'
+import fs from 'fs-extra'
+import ora from 'ora'
 
 export async function bundle(root: string) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
@@ -22,8 +23,8 @@ export async function bundle(root: string) {
       },
     },
   })
-
-  console.log(`Building client + server bundles...`)
+  const spinner = ora()
+  spinner.start(`Building client + server bundles...`)
 
   try {
     const [clientBundle, serverBundle] = await Promise.all([
@@ -32,6 +33,7 @@ export async function bundle(root: string) {
       // server build
       viteBuild(resolveViteConfig(true)),
     ])
+    spinner.succeed()
     return [clientBundle, serverBundle] as [RollupOutput, RollupOutput]
   } catch (e) {
     console.log(e)
@@ -66,7 +68,7 @@ export async function build(root: string = process.cwd()) {
   const [clientBundle] = await bundle(root)
   // 2. 引入 server-entry 模块
   const serverEntryPath = join(root, '.temp', 'ssr-entry.js')
-  const { render } = require(serverEntryPath)
+  const { render } = await import(serverEntryPath)
   // 3. 服务端渲染，产出 HTML
   await renderPage(render, root, clientBundle)
 }
