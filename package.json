@@ -7,7 +7,9 @@
     "prepare": "husky install",
     "start": "tsup --watch",
     "build": "tsup",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./"
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
+    "test:init": "vitest run",
+    "test:init-ui": "vitest --ui"
   },
   "bin": {
     "repress": "bin/repress.js"
@@ -27,6 +29,7 @@
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
+    "@vitest/ui": "^0.29.8",
     "commitlint": "^17.5.1",
     "eslint": "^8.37.0",
     "eslint-plugin-react": "^7.32.2",
@@ -36,7 +39,8 @@
     "ora": "^6.3.0",
     "rollup": "^3.20.2",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "vitest": "^0.29.8"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.1.0",
