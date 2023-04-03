@@ -6,3 +6,5 @@ dist
 bin
 esm-cjs
 docs
+tsconfig.json
+template.html

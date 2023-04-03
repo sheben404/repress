@@ -26,13 +26,17 @@ export function pluginIndexHtml(): Plugin {
     configureServer(server) {
       return () => {
         server.middlewares.use(async (req, res, next) => {
-          const html = await readFile(DEFAULT_HTML_PATH, 'utf-8');
+          let html = await readFile(DEFAULT_HTML_PATH, 'utf-8');
           try {
             // q：server.transformIndexHtml 的作用是什么？
             // a：这是 vite 的 API，用于在 html head 标签中插入一些 script 标签，实现热更新的效果
-            // html = await server.transformIndexHtml(req.url, html, req.originalUrl)
             // 只使用 server.transformIndexHtml 配置热更新会导致每次热更新都是全量刷新，不是局部刷新；
             // 因此还需要配置 src/node/dev.ts 中 pluginReact vite 官方插件来实现局部刷新
+            html = await server.transformIndexHtml(
+              req.url,
+              html,
+              req.originalUrl
+            );
             res.statusCode = 200;
             res.setHeader('Content-Type', 'text/html');
             res.end(html);

@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
     "start": "tsup --watch",
     "build": "tsup",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
-    "test:init": "vitest run",
-    "test:init-ui": "vitest --ui"
+    "prepare": "husky install",
+    "prepare:e2e": "tsx scripts/prepare-e2e.ts",
+    "test:unit": "vitest run",
+    "test:unit-ui": "vitest --ui",
+    "test:e2e": "playwright test"
   },
   "bin": {
     "repress": "bin/repress.js"
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
+    "@playwright/test": "1.26.1",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
@@ -34,11 +37,13 @@
     "eslint": "^8.37.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "execa": "^5.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "ora": "^6.3.0",
     "rollup": "^3.20.2",
     "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
     "typescript": "^5.0.3",
     "vitest": "^0.29.8"
   },
