@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entryPoints: ['src/node/cli.ts'],
@@ -9,6 +9,6 @@ export default defineConfig({
   dts: true,
   shims: true,
   banner: {
-    js: 'import { createRequire } from "module"; const require = createRequire(import.meta.url);',
-  },
-})
+    js: 'import { createRequire } from "module"; const require = createRequire(import.meta.url);'
+  }
+});
