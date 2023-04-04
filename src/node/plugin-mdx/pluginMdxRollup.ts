@@ -5,6 +5,7 @@ import rehypePluginSlug from 'rehype-slug';
 import remarkPluginMDXFrontMatter from 'remark-mdx-frontmatter';
 import remarkPluginFrontmatter from 'remark-frontmatter';
 import type { Plugin } from 'vite';
+import { rehypePluginPreWrapper } from './rehypePlugins/preWrapper';
 
 export function pluginMdxRollup(): Plugin[] {
   return [
@@ -27,7 +28,8 @@ export function pluginMdxRollup(): Plugin[] {
               value: '#'
             }
           }
-        ]
+        ],
+        rehypePluginPreWrapper
       ]
     }) as Plugin
   ];
