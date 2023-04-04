@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
+import siteData from 'repress:site-data';
 
 function renderInBrowser() {
   const containerEl = document.getElementById('root');

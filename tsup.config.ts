@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entryPoints: ['src/node/cli.ts'],
+  entryPoints: ['src/node/cli.ts', 'src/node/index.ts'],
   bundle: true,
   splitting: true,
   outDir: 'dist',
@@ -10,5 +10,6 @@ export default defineConfig({
   shims: true,
   banner: {
     js: 'import { createRequire } from "module"; const require = createRequire(import.meta.url);'
-  }
+  },
+  clean: true
 });
