@@ -13,7 +13,7 @@ export async function createDevServer(
   console.log(config.siteData);
 
   return createViteDevServer({
-    root,
+    root: PACKAGE_ROOT,
     plugins: [
       pluginIndexHtml(),
       pluginReact(),

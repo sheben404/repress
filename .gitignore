@@ -5,6 +5,7 @@
 .vite_opt_cache
 .vscode
 dist
+build
 node_modules
 pnpm-global
 TODOs.md
