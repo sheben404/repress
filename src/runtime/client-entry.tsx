@@ -3,6 +3,7 @@ import { App } from './App';
 import siteData from 'repress:site-data';
 
 function renderInBrowser() {
+  console.log('siteData', siteData);
   const containerEl = document.getElementById('root');
   if (!containerEl) {
     throw new Error('#root element not found');
