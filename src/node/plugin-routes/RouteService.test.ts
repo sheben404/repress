@@ -31,7 +31,7 @@ describe('RouteService', async () => {
       .toMatchInlineSnapshot(`
       "
         import React from 'react';
-        import loadable from '@loadable/component';
+        import loadable from \\"@loadable/component\\";
         const Route0 = loadable(() => import('TEST_DIR/a.mdx'));
       const Route1 = loadable(() => import('TEST_DIR/guide/b.mdx'));
         export const routes = [
