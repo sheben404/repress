@@ -1,0 +1,358 @@
+/**
+ * Colors Base
+ *
+ * These are the pure base color presets. Most of the time, you should not be
+ * using these colors directly in the theme but rather use "Colors Theme"
+ * instead because those are "Theme (light or dark)" dependant.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-c-white: #ffffff;
+  --repress-c-white-soft: #f9f9f9;
+  --repress-c-white-mute: #f1f1f1;
+
+  --repress-c-black: #1a1a1a;
+  --repress-c-black-pure: #000000;
+  --repress-c-black-soft: #242424;
+  --repress-c-black-mute: #2f2f2f;
+
+  --repress-c-gray: #8e8e8e;
+  --repress-c-gray-light-1: #aeaeae;
+  --repress-c-gray-light-2: #c7c7c7;
+  --repress-c-gray-light-3: #d1d1d1;
+  --repress-c-gray-light-4: #e5e5e5;
+  --repress-c-gray-light-5: #f2f2f2;
+  --repress-c-gray-dark-1: #636363;
+  --repress-c-gray-dark-2: #484848;
+  --repress-c-gray-dark-3: #3a3a3a;
+  --repress-c-gray-dark-4: #282828;
+  --repress-c-gray-dark-5: #202020;
+
+  --repress-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --repress-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --repress-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --repress-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --repress-c-indigo: #213547;
+  --repress-c-indigo-soft: #476582;
+  --repress-c-indigo-light: #aac8e4;
+  --repress-c-indigo-lighter: #c9def1;
+  --repress-c-indigo-dark: #1d2f3f;
+  --repress-c-indigo-darker: #14212e;
+
+  --repress-c-text-light-1: var(--repress-c-indigo);
+  --repress-c-text-light-2: rgba(60, 60, 60, 0.7);
+  --repress-c-text-light-3: rgba(60, 60, 60, 0.33);
+  --repress-c-text-light-4: rgba(60, 60, 60, 0.18);
+
+  --repress-c-text-dark-1: rgba(255, 255, 255, 0.87);
+  --repress-c-text-dark-2: rgba(235, 235, 235, 0.6);
+  --repress-c-text-dark-3: rgba(235, 235, 235, 0.38);
+  --repress-c-text-dark-4: rgba(235, 235, 235, 0.18);
+
+  --repress-c-green: #21b8a3;
+  --repress-c-green-light: #41c6b0;
+  --repress-c-green-lighter: #41c6b0;
+  --repress-c-green-dark: #149684;
+  --repress-c-green-darker: #149684;
+  --repress-c-green-dimm: #062521;
+
+  --repress-c-green-dimm-1: rgba(66, 184, 131, 0.5);
+  --repress-c-green-dimm-2: rgba(66, 184, 131, 0.25);
+  --repress-c-green-dimm-3: rgba(66, 184, 131, 0.05);
+
+  --repress-c-blue: #646cff;
+  --repress-c-blue-light: #747bff;
+  --repress-c-blue-lighter: #9499ff;
+  --repress-c-blue-lightest: #bcc0ff;
+  --repress-c-blue-dark: #535bf2;
+  --repress-c-blue-darker: #454ce1;
+  --repress-c-blue-dimm: rgba(100, 108, 255, 0.08);
+
+  --repress-c-yellow: #ffc517;
+  --repress-c-yellow-light: #fcd253;
+  --repress-c-yellow-lighter: #fcfc7c;
+  --repress-c-yellow-darker: #ad850e;
+  --repress-c-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+  --repress-c-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+  --repress-c-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+
+  --repress-c-red: #ed3c50;
+  --repress-c-red-light: #f54e82;
+  --repress-c-red-lighter: #fd1d7c;
+  --repress-c-red-darker: #ab2131;
+  --repress-c-red-dimm-1: rgba(237, 60, 80, 0.5);
+  --repress-c-red-dimm-2: rgba(237, 60, 80, 0.25);
+  --repress-c-red-dimm-3: rgba(237, 60, 80, 0.05);
+}
+
+/**
+ * Colors Theme
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-c-bg: var(--repress-c-white);
+  --repress-c-bg-soft: var(--repress-c-white-soft);
+  --repress-c-bg-mute: var(--repress-c-white-mute);
+  --repress-c-bg-alt: var(--repress-c-white-soft);
+
+  --repress-c-divider: var(--repress-c-divider-light-1);
+  --repress-c-divider-light: var(--repress-c-divider-light-2);
+
+  --repress-c-text-1: var(--repress-c-text-light-1);
+  --repress-c-text-2: var(--repress-c-text-light-2);
+  --repress-c-text-3: var(--repress-c-text-light-3);
+  --repress-c-text-4: var(--repress-c-text-light-4);
+
+  --repress-c-text-code: var(--repress-c-indigo-soft);
+
+  --repress-c-brand: var(--repress-c-green);
+  --repress-c-brand-light: var(--repress-c-green-light);
+  --repress-c-brand-lighter: var(--repress-c-green-lighter);
+  --repress-c-brand-dark: var(--repress-c-green-dark);
+  --repress-c-brand-darker: var(--repress-c-green-darker);
+}
+
+.dark {
+  --repress-c-bg: var(--repress-c-black-soft);
+  --repress-c-bg-soft: var(--repress-c-black-mute);
+  --repress-c-bg-mute: var(--repress-c-gray-dark-3);
+  --repress-c-bg-alt: var(--repress-c-black);
+
+  --repress-c-divider: var(--repress-c-divider-dark-1);
+  --repress-c-divider-light: var(--repress-c-divider-dark-2);
+
+  --repress-c-divider-inverse: var(--repress-c-divider-light-1);
+  --repress-c-divider-inverse-light: var(--repress-c-divider-light-2);
+
+  --repress-c-text-1: var(--repress-c-text-dark-1);
+  --repress-c-text-2: var(--repress-c-text-dark-2);
+  --repress-c-text-3: var(--repress-c-text-dark-3);
+  --repress-c-text-4: var(--repress-c-text-dark-4);
+
+  --repress-c-text-inverse-1: var(--repress-c-text-light-1);
+  --repress-c-text-inverse-2: var(--repress-c-text-light-2);
+  --repress-c-text-inverse-3: var(--repress-c-text-light-3);
+  --repress-c-text-inverse-4: var(--repress-c-text-light-4);
+
+  --repress-c-text-code: var(--repress-c-indigo-lighter);
+}
+
+/**
+ * Typography
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-font-family-base: 'Inter var experimental', 'Inter var',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --repress-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/**
+ * Layouts
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-layout-max-width: 1440px;
+}
+
+/**
+ * Component: Code
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-code-line-height: 1.7;
+  --repress-code-font-size: 0.875em;
+
+  --repress-code-block-color: var(--repress-c-text-dark-1);
+  --repress-code-block-bg: #292d3e;
+
+  --repress-code-line-highlight-color: rgba(0, 0, 0, 0.5);
+  --repress-code-line-number-color: var(--repress-c-text-dark-3);
+
+  --repress-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
+  --repress-code-copy-code-active-text: var(--repress-c-text-dark-2);
+}
+
+/**
+ * Icons
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2'/%3E%3C/svg%3E");
+  --repress-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4'/%3E%3C/svg%3E");
+  --repress-icon-tip: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M512 960C264.58 960 64 759.42 64 512S264.58 64 512 64s448 200.58 448 448-200.58 448-448 448z m0-832c-212.08 0-384 171.92-384 384s171.92 384 384 384 384-171.92 384-384-171.92-384-384-384z m0 112c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z m0 160c-17.67 0-32 14.33-32 32v320c0 17.67 14.33 32 32 32 17.67 0 32-14.33 32-32V432c0-17.67-14.33-32-32-32z' fill='%2321b8a3'/%3E%3C/svg%3E");
+}
+
+.dark {
+  --repress-code-block-bg: var(--repress-c-bg-alt);
+}
+
+/**
+ * Z-indexes
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-z-index-local-nav: 10;
+  --repress-z-index-nav: 20;
+  --repress-z-index-layout-top: 30;
+  --repress-z-index-backdrop: 40;
+  --repress-z-index-sidebar: 50;
+  --repress-z-index-footer: 60;
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-button-brand-border: var(--repress-c-brand-light);
+  --repress-button-brand-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-bg: var(--repress-c-brand);
+  --repress-button-brand-hover-border: var(--repress-c-brand-light);
+  --repress-button-brand-hover-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-hover-bg: var(--repress-c-brand-light);
+  --repress-button-brand-active-border: var(--repress-c-brand-light);
+  --repress-button-brand-active-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-active-bg: var(--repress-button-brand-bg);
+
+  --repress-button-alt-border: var(--repress-c-gray-light-3);
+  --repress-button-alt-text: var(--repress-c-text-light-1);
+  --repress-button-alt-bg: var(--repress-c-gray-light-5);
+  --repress-button-alt-hover-border: var(--repress-c-gray-light-3);
+  --repress-button-alt-hover-text: var(--repress-c-text-light-1);
+  --repress-button-alt-hover-bg: var(--repress-c-gray-light-4);
+  --repress-button-alt-active-border: var(--repress-c-gray-light-3);
+  --repress-button-alt-active-text: var(--repress-c-text-light-1);
+  --repress-button-alt-active-bg: var(--repress-c-gray-light-3);
+
+  --repress-button-sponsor-border: var(--repress-c-gray-light-3);
+  --repress-button-sponsor-text: var(--repress-c-text-light-2);
+  --repress-button-sponsor-bg: transparent;
+  --repress-button-sponsor-hover-border: var(--repress-c-sponsor);
+  --repress-button-sponsor-hover-text: var(--repress-c-sponsor);
+  --repress-button-sponsor-hover-bg: transparent;
+  --repress-button-sponsor-active-border: var(--repress-c-sponsor);
+  --repress-button-sponsor-active-text: var(--repress-c-sponsor);
+  --repress-button-sponsor-active-bg: transparent;
+}
+
+.dark {
+  --repress-button-brand-border: var(--repress-c-brand-light);
+  --repress-button-brand-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-bg: var(--repress-c-brand-dark);
+  --repress-button-brand-hover-border: var(--repress-c-brand-lighter);
+  --repress-button-brand-hover-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-hover-bg: var(--repress-c-brand);
+  --repress-button-brand-active-border: var(--repress-c-brand-lighter);
+  --repress-button-brand-active-text: var(--repress-c-text-dark-1);
+  --repress-button-brand-active-bg: var(--repress-button-brand-bg);
+
+  --repress-button-alt-border: var(--repress-c-gray-dark-2);
+  --repress-button-alt-text: var(--repress-c-text-dark-1);
+  --repress-button-alt-bg: var(--repress-c-bg-mute);
+  --repress-button-alt-hover-border: var(--repress-c-gray-dark-2);
+  --repress-button-alt-hover-text: var(--repress-c-text-dark-1);
+  --repress-button-alt-hover-bg: var(--repress-c-gray-dark-2);
+  --repress-button-alt-active-border: var(--repress-c-gray-dark-2);
+  --repress-button-alt-active-text: var(--repress-c-text-dark-1);
+  --repress-button-alt-active-bg: var(--repress-button-alt-bg);
+
+  --repress-button-sponsor-border: var(--repress-c-gray-dark-1);
+  --repress-button-sponsor-text: var(--repress-c-text-dark-2);
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-custom-block-code-font-size: 13px;
+
+  --repress-custom-block-info-border: var(--repress-c-divider-light);
+  --repress-custom-block-info-text: var(--repress-c-text-2);
+  --repress-custom-block-info-bg: var(--repress-c-white-soft);
+  --repress-custom-block-info-code-bg: var(--repress-c-gray-light-4);
+
+  --repress-custom-block-tip-border: var(--repress-c-green-dimm-1);
+  --repress-custom-block-tip-text: var(--repress-c-green-darker);
+  --repress-custom-block-tip-bg: var(--repress-c-green-dimm-3);
+  --repress-custom-block-tip-code-bg: var(--repress-custom-block-tip-bg);
+
+  --repress-custom-block-warning-border: var(--repress-c-yellow-dimm-1);
+  --repress-custom-block-warning-text: var(--repress-c-yellow-darker);
+  --repress-custom-block-warning-bg: var(--repress-c-yellow-dimm-3);
+  --repress-custom-block-warning-code-bg: var(
+    --repress-custom-block-warning-bg
+  );
+
+  --repress-custom-block-danger-border: var(--repress-c-red-dimm-1);
+  --repress-custom-block-danger-text: var(--repress-c-red-darker);
+  --repress-custom-block-danger-bg: var(--repress-c-red-dimm-3);
+  --repress-custom-block-danger-code-bg: var(--repress-custom-block-danger-bg);
+}
+
+.dark {
+  --repress-custom-block-info-border: var(--repress-c-divider-light);
+  --repress-custom-block-info-bg: var(--repress-c-black-mute);
+  --repress-custom-block-info-code-bg: var(--repress-c-gray-dark-4);
+
+  --repress-custom-block-tip-border: var(--repress-c-green-dimm-2);
+  --repress-custom-block-tip-text: var(--repress-c-green-light);
+
+  --repress-custom-block-warning-border: var(--repress-c-yellow-dimm-2);
+  --repress-custom-block-warning-text: var(--repress-c-yellow-light);
+
+  --repress-custom-block-danger-border: var(--repress-c-red-dimm-2);
+  --repress-custom-block-danger-text: var(--repress-c-red-light);
+}
+
+/**
+ * Component: Nav
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-nav-height: 56px;
+}
+
+/**
+ * Component: Sidebar
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-sidebar-width: 272px;
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-home-hero-name-color: transparent;
+  --repress-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--repress-c-brand) 30%,
+    #41d1ff
+  );
+
+  --repress-home-hero-image-background-image: none;
+  --repress-home-hero-image-filter: none;
+}
+
+/**
+ * Shadows
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --repress-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  --repress-shadow-2: 0 3px 12px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+  --repress-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --repress-shadow-4: 0 14px 44px rgba(0, 0, 0, 0.12),
+    0 3px 9px rgba(0, 0, 0, 0.12);
+  --repress-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.16);
+}
