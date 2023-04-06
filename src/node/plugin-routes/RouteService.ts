@@ -23,7 +23,6 @@ export class RouteService {
         ignore: ['**/node_modules/**', '**/build/**', 'config.ts']
       })
       .sort();
-    console.log(files);
 
     files.forEach((file) => {
       const fileRelativePath = normalizePath(
@@ -63,7 +62,7 @@ export class RouteService {
   export const routes = [
   ${this._routeData
     .map((route, index) => {
-      return `{ path: '${route.routePath}', element: React.createElement(Route${index}) }`;
+      return `{ path: '${route.routePath}', element: React.createElement(Route${index}), preload: () => import('${route.absolutePath}') }`;
     })
     .join(',\n')}
   ];
