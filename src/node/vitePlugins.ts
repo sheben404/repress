@@ -11,12 +11,12 @@ export async function createVitePlugins(
 ) {
   return [
     pluginIndexHtml(),
-    pluginReact({
-      jsxRuntime: 'automatic'
-    }),
     pluginConfig(config, restartServer),
     pluginRoutes({
       root: config.root
+    }),
+    pluginReact({
+      jsxRuntime: 'automatic'
     }),
     await createPluginMdx()
   ];
