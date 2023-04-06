@@ -6,31 +6,35 @@ import remarkPluginMDXFrontMatter from 'remark-mdx-frontmatter';
 import remarkPluginFrontmatter from 'remark-frontmatter';
 import type { Plugin } from 'vite';
 import { rehypePluginPreWrapper } from './rehypePlugins/preWrapper';
+import { rehypePluginShiki } from './rehypePlugins/shiki';
+import shiki from 'shiki';
 
-export function pluginMdxRollup(): Plugin[] {
-  return [
-    pluginMdx({
-      remarkPlugins: [
-        remarkPluginGFM,
-        remarkPluginFrontmatter,
-        [remarkPluginMDXFrontMatter, { name: 'frontmatter' }]
-      ],
-      rehypePlugins: [
-        rehypePluginSlug,
-        [
-          rehypePluginAutolinkHeadings,
-          {
-            properties: {
-              class: 'header-anchor'
-            },
-            content: {
-              type: 'text',
-              value: '#'
-            }
+export async function pluginMdxRollup(): Promise<Plugin> {
+  return pluginMdx({
+    remarkPlugins: [
+      remarkPluginGFM,
+      remarkPluginFrontmatter,
+      [remarkPluginMDXFrontMatter, { name: 'frontmatter' }]
+    ],
+    rehypePlugins: [
+      rehypePluginSlug,
+      [
+        rehypePluginAutolinkHeadings,
+        {
+          properties: {
+            class: 'header-anchor'
+          },
+          content: {
+            type: 'text',
+            value: '#'
           }
-        ],
-        rehypePluginPreWrapper
+        }
+      ],
+      rehypePluginPreWrapper,
+      [
+        rehypePluginShiki,
+        { highlighter: await shiki.getHighlighter({ theme: 'nord' }) }
       ]
-    }) as Plugin
-  ];
+    ]
+  }) as Plugin;
 }

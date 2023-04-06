@@ -8,10 +8,12 @@ import { SiteConfig } from 'shared/types';
 import { createVitePlugins } from './vitePlugins';
 
 export async function bundle(root: string, config: SiteConfig) {
-  const resolveViteConfig = (isServer: boolean): InlineConfig => ({
+  const resolveViteConfig = async (
+    isServer: boolean
+  ): Promise<InlineConfig> => ({
     mode: 'production',
     root,
-    plugins: createVitePlugins(config),
+    plugins: await createVitePlugins(config),
     ssr: {
       // 注意加上这个配置，防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
       noExternal: ['react-router-dom']
@@ -34,9 +36,9 @@ export async function bundle(root: string, config: SiteConfig) {
   try {
     const [clientBundle, serverBundle] = await Promise.all([
       // client build
-      viteBuild(resolveViteConfig(false)),
+      viteBuild(await resolveViteConfig(false)),
       // server build
-      viteBuild(resolveViteConfig(true))
+      viteBuild(await resolveViteConfig(true))
     ]);
     spinner.succeed();
     return [clientBundle, serverBundle] as [RollupOutput, RollupOutput];
