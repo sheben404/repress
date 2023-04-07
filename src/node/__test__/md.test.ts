@@ -28,10 +28,10 @@ describe('Markdown compile cases', async () => {
   });
 
   test('Compile code', async () => {
-    const mdContent = 'I am using `Island.js`';
+    const mdContent = 'I am using `Repress.js`';
     const result = processor.processSync(mdContent);
     expect(result.value).toMatchInlineSnapshot(
-      '"<p>I am using <code>Island.js</code></p>"'
+      '"<p>I am using <code>Repress.js</code></p>"'
     );
   });
 
@@ -49,7 +49,7 @@ describe('Markdown compile cases', async () => {
 
 ## h2 \`code\`
 
-### h3 [link](https://islandjs.dev)
+### h3 [link](https://repressjs.dev)
 
 #### h4
 
