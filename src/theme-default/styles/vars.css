@@ -155,7 +155,6 @@
 
 :root {
   --repress-layout-max-width: 1440px;
-  --repress-aside-width: 268px;
 }
 
 /**
@@ -323,6 +322,7 @@
 
 :root {
   --repress-sidebar-width: 272px;
+  --repress-aside-width: 268px;
 }
 
 /**

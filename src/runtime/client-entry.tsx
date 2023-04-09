@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { App, initPageData } from './App';
+import { App, initPageData } from './app';
 import { BrowserRouter } from 'react-router-dom';
 import { DataContext } from './hooks';
 
