@@ -79,6 +79,9 @@ dependencies:
   shiki:
     specifier: ^0.14.1
     version: 0.14.1
+  sirv:
+    specifier: ^2.0.2
+    version: 2.0.2
   unified:
     specifier: ^10.1.2
     version: 10.1.2

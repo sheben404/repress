@@ -1,7 +1,9 @@
 import { Plugin } from 'vite';
 import { SiteConfig } from 'shared/types/index';
-import { join, relative } from 'path';
+import path, { join, relative } from 'path';
 import { PACKAGE_ROOT } from 'node/constants';
+import sirv from 'sirv';
+import fs from 'fs-extra';
 
 const SITE_DATA_ID = 'repress:site-data';
 
@@ -54,6 +56,12 @@ export function pluginConfig(
         // 然后每次 import 新的产物
         // ✅ 可行
         await restartServer();
+      }
+    },
+    configureServer(server) {
+      const publicDir = path.join(config.root, 'public');
+      if (fs.pathExistsSync(publicDir)) {
+        server.middlewares.use(sirv(publicDir));
       }
     }
   };
