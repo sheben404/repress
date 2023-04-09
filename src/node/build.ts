@@ -17,7 +17,7 @@ export async function bundle(root: string, config: SiteConfig) {
     plugins: await createVitePlugins(config, undefined, isServer),
     ssr: {
       // 注意加上这个配置，防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
-      noExternal: ['react-router-dom']
+      noExternal: ['react-router-dom', 'lodash-es']
     },
     build: {
       minify: false,
@@ -61,7 +61,7 @@ export async function renderPage(
   return Promise.all(
     routes.map(async (route) => {
       const routePath = route.path;
-      const appHtml = render(routePath);
+      const appHtml = await render(routePath);
       const html = `
 <!DOCTYPE html>
 <html>

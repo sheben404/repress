@@ -1,13 +1,17 @@
-import { App } from './app';
+import { DataContext } from '@runtime';
+import { App, initPageData } from './app';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 
 // For ssr component render
-export function render(pagePath: string) {
+export async function render(pagePath: string) {
+  const pageData = await initPageData(pagePath);
   return renderToString(
-    <StaticRouter location={pagePath}>
-      <App />
-    </StaticRouter>
+    <DataContext.Provider value={pageData}>
+      <StaticRouter location={pagePath}>
+        <App />
+      </StaticRouter>
+    </DataContext.Provider>
   );
 }
 
