@@ -1,0 +1,405 @@
+/**
+ * Headings
+ * -------------------------------------------------------------------------- */
+
+.repress-doc h1,
+.repress-doc h2,
+.repress-doc h3,
+.repress-doc h4,
+.repress-doc h5,
+.repress-doc h6 {
+  position: relative;
+  font-weight: 600;
+  outline: none;
+}
+
+.repress-doc h1 {
+  letter-spacing: -0.02em;
+  line-height: 40px;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.repress-doc h2 {
+  margin: 48px 0 16px;
+  /* padding-top: 24px; */
+  letter-spacing: -0.02em;
+  line-height: 32px;
+  font-size: 24px;
+}
+
+.repress-doc h3 {
+  margin: 32px 0 0;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+  font-size: 20px;
+}
+
+.repress-doc .header-anchor {
+  float: left;
+  margin-left: -0.87em;
+  padding-right: 0.23em;
+  font-weight: 500;
+  opacity: 0;
+  transition: color 0.25s, opacity 0.25s;
+}
+
+.repress-doc h1:hover .header-anchor,
+.repress-doc h1 .header-anchor:focus,
+.repress-doc h2:hover .header-anchor,
+.repress-doc h2 .header-anchor:focus,
+.repress-doc h3:hover .header-anchor,
+.repress-doc h3 .header-anchor:focus,
+.repress-doc h4:hover .header-anchor,
+.repress-doc h4 .header-anchor:focus,
+.repress-doc h5:hover .header-anchor,
+.repress-doc h5 .header-anchor:focus,
+.repress-doc h6:hover .header-anchor,
+.repress-doc h6 .header-anchor:focus {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .repress-doc h1 {
+    letter-spacing: -0.02em;
+    line-height: 40px;
+    font-size: 32px;
+  }
+}
+
+/**
+    * Paragraph and inline elements
+    * -------------------------------------------------------------------------- */
+
+.repress-doc p,
+.repress-doc summary {
+  margin: 16px 0;
+}
+
+.repress-doc p {
+  z-index: 2;
+  line-height: 28px;
+}
+
+.repress-doc blockquote {
+  margin: 16px 0;
+  border-left: 2px solid var(--repress-c-divider);
+  padding-left: 16px;
+  transition: border-color 0.5s;
+}
+
+.repress-doc blockquote > p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--repress-c-text-2);
+  transition: color 0.5s;
+}
+
+.repress-doc a {
+  font-weight: 500;
+  color: var(--repress-c-brand);
+  text-decoration-style: dotted;
+  transition: color 0.25s;
+}
+
+.repress-doc a:hover {
+  color: var(--repress-c-brand-dark);
+}
+
+.repress-doc strong {
+  font-weight: 600;
+}
+
+/**
+    * Lists
+    * -------------------------------------------------------------------------- */
+
+.repress-doc ul,
+.repress-doc ol {
+  padding-left: 1.25rem;
+  margin: 16px 0;
+}
+
+.repress-doc ul {
+  list-style: disc;
+}
+
+.repress-doc ol {
+  list-style: decimal;
+}
+
+.repress-doc li + li {
+  margin-top: 8px;
+}
+
+.repress-doc li > ol,
+.repress-doc li > ul {
+  margin: 8px 0 0;
+}
+
+/**
+    * Table
+    * -------------------------------------------------------------------------- */
+
+.repress-doc table {
+  display: block;
+  border-collapse: collapse;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.repress-doc tr {
+  border-top: 1px solid var(--repress-c-divider);
+  transition: background-color 0.5s;
+}
+
+.repress-doc tr:nth-child(2n) {
+  background-color: var(--repress-c-bg-soft);
+}
+
+.repress-doc th,
+.repress-doc td {
+  border: 1px solid var(--repress-c-divider);
+  padding: 12px 16px;
+}
+
+.repress-doc th {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--repress-c-white-soft);
+}
+
+.dark .repress-doc th {
+  background-color: var(--repress-c-black);
+}
+
+/**
+    * Decorational elements
+    * -------------------------------------------------------------------------- */
+
+.repress-doc hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 1px solid var(--repress-c-divider-light);
+}
+
+/**
+    * Custom Block
+    * -------------------------------------------------------------------------- */
+
+.repress-doc .custom-block {
+  margin: 16px 0;
+}
+
+.repress-doc .custom-block p {
+  margin: 8px 0;
+  line-height: 24px;
+}
+
+.repress-doc .custom-block p:first-child {
+  margin: 0;
+}
+
+.repress-doc .custom-block a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: opacity 0.25s;
+}
+
+.repress-doc .custom-block a:hover {
+  opacity: 0.6;
+}
+
+.repress-doc .custom-block code {
+  font-size: var(--repress-custom-block-code-font-size);
+  font-weight: 700;
+  color: inherit;
+}
+
+.repress-doc .custom-block div[class*='language-'] {
+  margin: 8px 0;
+}
+
+.repress-doc .custom-block div[class*='language-'] code {
+  font-weight: 400;
+  background-color: transparent;
+}
+
+/**
+    * Code
+    * -------------------------------------------------------------------------- */
+
+/* inline code */
+.repress-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  font-size: var(--repress-code-font-size);
+}
+
+.repress-doc :not(pre, div) > code {
+  border-radius: 4px;
+  padding: 3px 6px;
+  color: var(--repress-c-text-code);
+  background-color: var(--repress-c-bg-mute);
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.repress-doc h1 > code,
+.repress-doc h2 > code,
+.repress-doc h3 > code {
+  font-size: 0.9em;
+}
+
+.repress-doc a > code {
+  color: var(--repress-c-brand);
+  transition: color 0.25s;
+}
+
+.repress-doc a:hover > code {
+  color: var(--repress-c-brand-dark);
+}
+
+.repress-doc div[class*='language-'] {
+  position: relative;
+  margin: 16px -24px;
+  background-color: var(--repress-code-block-bg);
+  overflow-x: auto;
+  transition: background-color 0.5s;
+}
+
+@media (min-width: 640px) {
+  .repress-doc div[class*='language-'] {
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .repress-doc li div[class*='language-'] {
+    border-radius: 8px 0 0 8px;
+  }
+}
+
+.repress-doc div[class*='language-'] + div[class*='language-'],
+.repress-doc div[class$='-api'] + div[class*='language-'],
+.repress-doc
+  div[class*='language-']
+  + div[class$='-api']
+  > div[class*='language-'] {
+  margin-top: -8px;
+}
+
+.repress-doc [class*='language-'] pre,
+.repress-doc [class*='language-'] code {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.repress-doc [class*='language-'] pre {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 16px 0;
+  background: transparent;
+  overflow-x: auto;
+}
+
+.repress-doc [class*='language-'] code {
+  display: block;
+  padding: 0 24px;
+  width: fit-content;
+  min-width: 100%;
+  line-height: var(--repress-code-line-height);
+  font-size: var(--repress-code-font-size);
+  color: var(--repress-code-block-color);
+  transition: color 0.5s;
+}
+
+.repress-doc [class*='language-'] code .highlighted {
+  background-color: var(--repress-code-line-highlight-color);
+  transition: background-color 0.5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width: calc(100% + 2 * 24px);
+  display: inline-block;
+}
+
+.repress-doc [class*='language-'] > button.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--repress-code-block-bg);
+  opacity: 0;
+  cursor: pointer;
+  background-image: var(--repress-icon-copy);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: opacity 0.4s;
+}
+
+.repress-doc [class*='language-']:hover > button.copy,
+.repress-doc [class*='language-'] > button.copy:focus {
+  opacity: 1;
+}
+
+.repress-doc [class*='language-'] > button.copy:hover {
+  background-color: var(--repress-code-copy-code-hover-bg);
+}
+
+.repress-doc [class*='language-'] > button.copy.copied,
+.repress-doc [class*='language-'] > button.copy:hover.copied {
+  border-radius: 0 4px 4px 0;
+  background-color: var(--repress-code-copy-code-hover-bg);
+  background-image: var(--repress-icon-copied);
+}
+
+.repress-doc [class*='language-'] > button.copy.copied::before,
+.repress-doc [class*='language-'] > button.copy:hover.copied::before {
+  position: relative;
+  left: -65px;
+  display: block;
+  border-radius: 4px 0 0 4px;
+  padding-top: 8px;
+  width: 64px;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--repress-code-copy-code-active-text);
+  background-color: var(--repress-code-copy-code-hover-bg);
+  white-space: nowrap;
+  content: 'Copied';
+}
+
+.repress-doc [class*='language-'] > span.lang {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--repress-c-text-dark-3);
+  transition: color 0.4s, opacity 0.4s;
+}
+
+.repress-doc [class*='language-']:hover > button.copy + span.lang,
+.repress-doc [class*='language-'] > button.copy:focus + span.lang {
+  opacity: 0;
+}

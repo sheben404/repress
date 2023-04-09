@@ -1,6 +1,7 @@
 import { usePageData } from '@runtime';
 import '../styles/base.css';
 import '../styles/vars.css';
+import '../styles/doc.css';
 import 'uno.css';
 import { Nav } from '../components/Nav';
 import { HomeLayout } from './HomeLayout/index';
@@ -23,7 +24,13 @@ export function Layout() {
   return (
     <div>
       <Nav />
-      {getContent()}
+      <section
+        style={{
+          paddingTop: 'var(--repress-nav-height)'
+        }}
+      >
+        {getContent()}
+      </section>
     </div>
   );
 }

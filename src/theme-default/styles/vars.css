@@ -155,6 +155,7 @@
 
 :root {
   --repress-layout-max-width: 1440px;
+  --repress-aside-width: 268px;
 }
 
 /**
