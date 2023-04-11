@@ -2,6 +2,7 @@ import { DataContext } from '@runtime';
 import { App, initPageData } from './app';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
 
 export interface RenderResult {
   appHtml: string;
@@ -10,16 +11,18 @@ export interface RenderResult {
 }
 
 // For ssr component render
-export async function render(pagePath: string) {
+export async function render(pagePath: string, helmetContext: object) {
   const pageData = await initPageData(pagePath);
   const { clearRepressData, data } = await import('./jsx-runtime');
   clearRepressData();
   const appHtml = renderToString(
-    <DataContext.Provider value={pageData}>
-      <StaticRouter location={pagePath}>
-        <App />
-      </StaticRouter>
-    </DataContext.Provider>
+    <HelmetProvider context={helmetContext}>
+      <DataContext.Provider value={pageData}>
+        <StaticRouter location={pagePath}>
+          <App />
+        </StaticRouter>
+      </DataContext.Provider>
+    </HelmetProvider>
   );
   const { repressProps, repressToPathMap } = data;
   return {
