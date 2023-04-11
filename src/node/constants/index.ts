@@ -18,3 +18,5 @@ export const SERVER_ENTRY_PATH = join(
 );
 
 export const MD_REGEX = /\.mdx?$/;
+
+export const MASK_SPLITTER = '!!REPRESS!!';
