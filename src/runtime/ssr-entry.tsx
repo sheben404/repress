@@ -6,6 +6,9 @@ import { StaticRouter } from 'react-router-dom/server';
 // For ssr component render
 export async function render(pagePath: string) {
   const pageData = await initPageData(pagePath);
+  const { clearRepressData, data } = await import('./jsx-runtime');
+  const { repressProps, repressToPathMap } = data;
+  clearRepressData();
   return renderToString(
     <DataContext.Provider value={pageData}>
       <StaticRouter location={pagePath}>
@@ -13,6 +16,11 @@ export async function render(pagePath: string) {
       </StaticRouter>
     </DataContext.Provider>
   );
+  return {
+    appHtml,
+    repressProps,
+    repressToPathMap
+  };
 }
 
 // 导出路由数据

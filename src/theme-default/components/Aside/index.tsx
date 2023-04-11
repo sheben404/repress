@@ -1,4 +1,4 @@
-import { Header } from 'shared/types';
+import { Header, PropsWithRepress } from 'shared/types';
 import { useRef, useEffect } from 'react';
 import { bindingAsideScroll, scrollToTarget } from '../../logic/asideScroll';
 
@@ -6,7 +6,7 @@ interface AsideProps {
   headers: Header[];
 }
 
-export function Aside(props: AsideProps) {
+export function Aside(props: AsideProps & PropsWithRepress) {
   const { headers = [] } = props;
   const hasOutline = headers.length > 0;
   const markerRef = useRef<HTMLDivElement>(null);

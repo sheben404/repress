@@ -6,6 +6,9 @@ import { SiteConfig } from 'shared/types';
 import { createPluginMdx } from './plugin-mdx';
 import pluginUnocss from 'unocss/vite';
 import unocssOptions from './unocssOptions';
+import path from 'path';
+import babelPluginRepress from './babel-plugin-repress';
+import { PACKAGE_ROOT } from './constants';
 
 export async function createVitePlugins(
   config: SiteConfig,
@@ -21,7 +24,13 @@ export async function createVitePlugins(
       isSSR
     }),
     pluginReact({
-      jsxRuntime: 'automatic'
+      jsxRuntime: 'automatic',
+      jsxImportSource: isSSR
+        ? path.join(PACKAGE_ROOT, 'src', 'runtime')
+        : 'react',
+      babel: {
+        plugins: [babelPluginRepress]
+      }
     }),
     await createPluginMdx()
   ];
