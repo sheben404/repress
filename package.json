@@ -1,30 +1,43 @@
 {
   "name": "repress",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Vite SSG framework",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup && pnpm build:deps",
     "build:deps": "tsx ./scripts/prebundle.ts",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
+    "preview": "cd build && serve .",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx ./",
+    "lint:fix": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
     "prepare": "husky install",
-    "prepare:e2e": "tsx scripts/prepare-e2e.ts",
     "test:unit": "vitest run",
-    "test:unit-ui": "vitest --ui",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "prepare:e2e": "tsx ./scripts/prepare-e2e.cts",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "tsx ./scripts/release.ts"
   },
   "bin": {
     "repress": "bin/repress.js"
   },
+  "keywords": ["vite", "ssg"],
+  "author": "xxx",
+  "license": "MIT",
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts}": [
-      "eslint --fix"
+      "eslint --fix --quiet"
     ]
   },
-  "keywords": [],
-  "author": "sheben",
-  "license": "ISC",
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "src/runtime",
+    "src/theme-default",
+    "src/shared"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
