@@ -1,22 +1,44 @@
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { App, initPageData } from './app';
 import { BrowserRouter } from 'react-router-dom';
 import { DataContext } from './hooks';
+import { ComponentType } from 'react';
+
+declare global {
+  interface Window {
+    REPRESS: Record<string, ComponentType<unknown>>;
+    REPRESS_PROPS: unknown[];
+  }
+}
 
 async function renderInBrowser() {
   const containerEl = document.getElementById('root');
   if (!containerEl) {
     throw new Error('#root element not found');
   }
-  // 初始化 PageData
-  const pageData = await initPageData(location.pathname);
-  createRoot(containerEl).render(
-    <DataContext.Provider value={pageData}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </DataContext.Provider>
-  );
+  if (import.meta.env.DEV) {
+    // 初始化 PageData
+    const pageData = await initPageData(location.pathname);
+    createRoot(containerEl).render(
+      <DataContext.Provider value={pageData}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </DataContext.Provider>
+    );
+  } else {
+    // 生产环境下的 Partial Hydration
+    const repress = document.querySelectorAll('[__repress]');
+    if (repress.length === 0) {
+      return;
+    }
+    for (const repressItem of repress) {
+      // Aside:0
+      const [id, index] = repressItem.getAttribute('__repress').split(':');
+      const Element = window.REPRESS[id] as ComponentType<unknown>;
+      hydrateRoot(repressItem, <Element {...window.REPRESS_PROPS[index]} />);
+    }
+  }
 }
 
 renderInBrowser();

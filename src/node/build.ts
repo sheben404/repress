@@ -1,17 +1,21 @@
 import { InlineConfig, build as viteBuild } from 'vite';
 import {
   CLIENT_ENTRY_PATH,
+  EXTERNALS,
   MASK_SPLITTER,
+  PACKAGE_ROOT,
   SERVER_ENTRY_PATH
 } from './constants';
 import type { RollupOutput } from 'rollup';
 import path, { dirname, join } from 'path';
 import fs from 'fs-extra';
-import ora from 'ora';
+// import ora from 'ora';
 import { SiteConfig } from 'shared/types';
 import { createVitePlugins } from './vitePlugins';
 import { Route } from './plugin-routes';
 import { RenderResult } from 'runtime/ssr-entry';
+
+const CLIENT_OUTPUT = 'build';
 
 export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = async (
@@ -27,17 +31,20 @@ export async function bundle(root: string, config: SiteConfig) {
     build: {
       minify: false,
       ssr: isServer,
-      outDir: isServer ? path.join(root, '.temp') : path.join(root, 'build'),
+      outDir: isServer
+        ? path.join(root, '.temp')
+        : path.join(root, CLIENT_OUTPUT),
       rollupOptions: {
         input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,
         output: {
           format: isServer ? 'cjs' : 'esm'
-        }
+        },
+        external: EXTERNALS
       }
     }
   });
-  const spinner = ora();
-  spinner.start('Building client + server bundles...');
+  // const spinner = ora();
+  // spinner.start('Building client + server bundles...');
 
   try {
     const [clientBundle, serverBundle] = await Promise.all([
@@ -46,10 +53,16 @@ export async function bundle(root: string, config: SiteConfig) {
       // server build
       viteBuild(await resolveViteConfig(true))
     ]);
-    spinner.succeed();
+    const publicDir = join(root, 'public');
+    if (fs.pathExistsSync(publicDir)) {
+      await fs.copy(publicDir, join(root, CLIENT_OUTPUT));
+    }
+    await fs.copy(join(PACKAGE_ROOT, 'vendors'), join(root, CLIENT_OUTPUT));
+    // spinner.succeed();
     return [clientBundle, serverBundle] as [RollupOutput, RollupOutput];
   } catch (e) {
     console.log(e);
+    return [];
   }
 }
 
@@ -79,10 +92,14 @@ window.REPRESS_PROPS = JSON.parse(
   const injectId = 'repress:inject';
   return viteBuild({
     mode: 'production',
+    esbuild: {
+      jsx: 'automatic'
+    },
     build: {
       outDir: path.join(root, '.temp'),
       rollupOptions: {
-        input: injectId
+        input: injectId,
+        external: EXTERNALS
       }
     },
     plugins: [
@@ -130,8 +147,18 @@ export async function renderPage(
   return Promise.all(
     routes.map(async (route) => {
       const routePath = route.path;
-      const { appHtml, repressToPathMap, propsData } = await render(routePath);
-      buildRepress(root, repressToPathMap);
+      const {
+        appHtml,
+        repressToPathMap,
+        repressProps = []
+      } = await render(routePath);
+      const styleAssets = clientBundle.output.filter(
+        (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
+      );
+      const repressBundle = await buildRepress(root, repressToPathMap);
+      const repressCode = (repressBundle as RollupOutput).output[0].code;
+      const normalizeVendorFilename = (fileName: string) =>
+        fileName.replace(/\//g, '_') + '.js';
       const html = `
 <!DOCTYPE html>
 <html>
@@ -140,10 +167,24 @@ export async function renderPage(
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>title</title>
     <meta name="description" content="xxx">
+    ${styleAssets
+      .map((item) => `<link rel="stylesheet" href="/${item.fileName}">`)
+      .join('\n')}
+      <script type="importmap">
+      {
+        "imports": {
+          ${EXTERNALS.map(
+            (name) => `"${name}": "/${normalizeVendorFilename(name)}"`
+          ).join(',')}
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root">${appHtml}</div>
+    <script type="module">${repressCode}</script>
     <script type="module" src="/${clientChunk?.fileName}"></script>
+    <script id="repress-props">${JSON.stringify(repressProps)}</script>
   </body>
 </html>`.trim();
       const fileName = routePath.endsWith('/')

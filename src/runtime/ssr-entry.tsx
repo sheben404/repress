@@ -5,7 +5,7 @@ import { StaticRouter } from 'react-router-dom/server';
 
 export interface RenderResult {
   appHtml: string;
-  propsData: unknown[];
+  repressProps: unknown[];
   repressToPathMap: Record<string, string>;
 }
 
@@ -13,7 +13,6 @@ export interface RenderResult {
 export async function render(pagePath: string) {
   const pageData = await initPageData(pagePath);
   const { clearRepressData, data } = await import('./jsx-runtime');
-  const { repressProps, repressToPathMap } = data;
   clearRepressData();
   const appHtml = renderToString(
     <DataContext.Provider value={pageData}>
@@ -22,6 +21,7 @@ export async function render(pagePath: string) {
       </StaticRouter>
     </DataContext.Provider>
   );
+  const { repressProps, repressToPathMap } = data;
   return {
     appHtml,
     repressProps,

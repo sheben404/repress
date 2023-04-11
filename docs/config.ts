@@ -5,7 +5,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: "主页", link: "/" },
-      { text: "指南", link: "/guide/" },
+      { text: "指南", link: "/guide" },
     ],
     // 新增 sidebar 的内容
     sidebar: {
@@ -13,10 +13,6 @@ export default defineConfig({
         {
           text: '教程',
           items: [
-            {
-              text: 'Fresh 介绍',
-              link: '/guide'
-            },
             {
               text: '快速上手',
               link: '/guide/a'

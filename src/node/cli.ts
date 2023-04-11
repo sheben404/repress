@@ -1,5 +1,4 @@
 import { cac } from 'cac';
-import path = require('path');
 import { resolve } from 'path';
 import { build } from './build';
 import { resolveConfig } from './config';
