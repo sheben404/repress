@@ -7,7 +7,7 @@ const originJsxs = jsxRuntime.jsxs;
 
 export const data = {
   repressProps: [],
-  repressToPathMap: {}
+  repressPathToMap: {}
 };
 
 const internalJsx = (jsx, type, props, ...args) => {
@@ -15,7 +15,7 @@ const internalJsx = (jsx, type, props, ...args) => {
   if (props && props.__repress) {
     data.repressProps.push(props);
     const id = type.name;
-    data['repressToPathMap'][id] = props.__repress;
+    data['repressPathToMap'][id] = props.__repress;
 
     delete props.__repress;
     return jsx('div', {
@@ -34,5 +34,5 @@ export const Fragment = jsxRuntime.Fragment;
 
 export const clearRepressData = () => {
   data.repressProps = [];
-  data.repressToPathMap = {};
+  data.repressPathToMap = {};
 };

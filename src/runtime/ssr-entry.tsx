@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 export interface RenderResult {
   appHtml: string;
   repressProps: unknown[];
-  repressToPathMap: Record<string, string>;
+  repressPathToMap: Record<string, string>;
 }
 
 // For ssr component render
@@ -24,11 +24,11 @@ export async function render(pagePath: string, helmetContext: object) {
       </DataContext.Provider>
     </HelmetProvider>
   );
-  const { repressProps, repressToPathMap } = data;
+  const { repressProps, repressPathToMap } = data;
   return {
     appHtml,
     repressProps,
-    repressToPathMap
+    repressPathToMap
   };
 }
 

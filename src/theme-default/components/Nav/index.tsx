@@ -40,7 +40,7 @@ export function Nav() {
             ))}
           </div>
           <div before="menu-item-before" flex="~">
-            <SwitchAppearance />
+            <SwitchAppearance __repress />
           </div>
           <div className={styles.socialLinkIcon} before="menu-item-before">
             <a href="/">

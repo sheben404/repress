@@ -84,7 +84,7 @@ async function buildRepress(
         ([repressName, repressPath]) =>
           `import { ${repressName} } from '${repressPath}'`
       )
-      .join('')}
+      .join('\n')}
 window.REPRESS = { ${Object.keys(repressPathToMap).join(', ')} };
 window.REPRESS_PROPS = JSON.parse(
   document.getElementById('repress-props').textContent
@@ -158,13 +158,13 @@ export async function renderPage(
       } as HelmetData;
       const {
         appHtml,
-        repressToPathMap,
+        repressPathToMap,
         repressProps = []
       } = await render(routePath, helmetContext.context);
       const styleAssets = clientBundle.output.filter(
         (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
       );
-      const repressBundle = await buildRepress(root, repressToPathMap);
+      const repressBundle = await buildRepress(root, repressPathToMap);
       const repressCode = (repressBundle as RollupOutput).output[0].code;
       const normalizeVendorFilename = (fileName: string) =>
         fileName.replace(/\//g, '_') + '.js';
